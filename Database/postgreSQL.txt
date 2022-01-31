@@ -1,0 +1,67 @@
+
+-- SQL (Structured Query Language)
+
+
+-- CREATE TABLE
+
+CREATE TABLE customers(
+
+	customer_id SERIAL PRIMARY KEY, 
+  	first_name VARCHAR(20) NOT NULL, 
+  	last_name VARCHAR(20) NOT NULL, 
+    age INTEGER 
+
+) 
+
+-- CRUD CREATE READ UPDATE DELETE 
+
+-- INSERT CUSTOMER TO THE TABLE 
+INSERT INTO customers(first_name, last_name, age) VALUES('John','Doe', 45) 
+INSERT INTO customers(first_name, last_name, age) VALUES('Steven','Smith', 55)
+INSERT INTO customers(first_name, last_name, age) VALUES('Mary', 'Doe', 75)
+
+INSERT INTO customers(first_name) VALUES('Jerry')
+
+-- GET ALL CUSTOMERS
+
+SELECT * FROM customers -- Data is returne as a SET, not reccomened
+
+SELECT customer_id, first_name, last_name, age FROM customers -- better since this will crate a build plan
+
+
+--DELETING A CUSTOMER
+DELETE FROM customers -- dangerous because it will delete everything from the customers table
+
+-- Always a good idea to use PK(primary key) when deleting a record
+DELETE FROM customers WHERE customer_id = 1
+
+--UPDATE 
+UPDATE customers
+SET last_name = 'Doe', age = 66
+WHERE customer_id = 2
+
+UPDATE customers
+SET age = 34
+WHERE customer_id = 4
+
+
+--SELECT AND WHERE
+SELECT customer_id, first_name,last_name,age FROM customers
+WHRE age >= 66
+
+-- ORDER BY
+SELECT customer_id, first_name,last_name, age FROM customers
+ORDER BY customer_id DESC
+
+SELECT customer_id, first_name,last_name, age FROM customers
+ORDER BY customer_id ASC
+
+--Delteting a table = DROP TABLE customers
+
+ALTER TABLE customers
+DROP COLUMN fist_name
+
+DROP TABLE customers
+
+
+
