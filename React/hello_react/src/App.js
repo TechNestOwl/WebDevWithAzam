@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Login} from "./Login";
 
 
 class App extends Component {
@@ -15,7 +16,6 @@ class App extends Component {
         counter: 0, 
         username: 'John Doe'
       }
-
     }
 
     // inside arrow functions the value of this is not undefined 
@@ -55,6 +55,7 @@ class App extends Component {
         <div>
           <h1>{this.state.counter}</h1>
           <button onClick = {this.handleIncrement}>Increment</button>
+          <Login />
         </div>
       )
     }
