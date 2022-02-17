@@ -30,7 +30,7 @@ function App() {
 
   const user = userInfo.map( user => {
     return <li key = {user.id}>
-      {user.first_name},{user.email}
+      User: {user.first_name} {user.last_name}<br/> Email: {user.email}<br/>
       <img  src={user.avatar} alt="User Avatar"/>
       </li>
   })
@@ -38,13 +38,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Counter</h1>
+      <h3>Counter</h3>
       <button onClick = {handleDecrement}> - </button>
       <h3>{count}</h3>
       <button onClick = {handleIncrement}> + </button>
 
       {/* using hook to load data from a url and display user information on the screen */}
-      <h1>Using Hooks</h1>
+      {/* <h1>Using Hooks</h1> */}
       <div>
         <h3>List of users:</h3>
         <ul>
