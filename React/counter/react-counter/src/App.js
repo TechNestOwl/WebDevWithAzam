@@ -8,6 +8,7 @@ function App() {
 
   const handleDecrement = () => {
     setCount(count - 1)
+    console.log('decrement')
   };
   const handleIncrement = () => {
     setCount(count + 1)
@@ -22,16 +23,17 @@ function App() {
     fetch("https://reqres.in/api/users?page=2")
     .then(response => response.json())
     .then(result => {
-      // console.log(result.data)
-
+      console.log(result.data)
+      setUserInfo(result.data)
     });
   }
 
-  const users = users.map(user =>{
-    return <li>user.email</li>})
-
-
-
+  const user = userInfo.map( user => {
+    return <li key = {user.id}>
+      {user.first_name},{user.email}
+      <img  src={user.avatar} alt="User Avatar"/>
+      </li>
+  })
   
 
   return (
@@ -41,10 +43,14 @@ function App() {
       <h3>{count}</h3>
       <button onClick = {handleIncrement}> + </button>
 
-      {/* use Hooks to load data from a url. Display user information on the screen */}
+      {/* using hook to load data from a url and display user information on the screen */}
       <h1>Using Hooks</h1>
-      {/* <p>{userInfo.data.email}</p>
-      <p>{userInfo.data.first_name}</p> */}
+      <div>
+        <h3>List of users:</h3>
+        <ul>
+          {user}
+        </ul>
+      </div>
     </div>
   );
 }
