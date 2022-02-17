@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+// import {Hello} from './Hello';
 import {Login} from "./Login";
+import {BookList} from "./BookList";
+
 
 
 class App extends Component {
@@ -40,10 +43,16 @@ class App extends Component {
       console.log(this.counter)
       console.log('handle increment')
     } */
+    componendDidMount(){
+      fetch('https://raw.githubusercontent.com/benoitvallon/100-best-books/master/books.json')
+        .then(response => response.json())
+        .then (data => this.setState({}));
+
+    }
 
     render() {
 
-      // NOT A GOOD IDEA 
+      // NOT A GOOD IDEA  
       // This will cause infinite loop 
       /*
       this.setState({
@@ -53,9 +62,11 @@ class App extends Component {
 
       return (
         <div>
+          {/* <Hello /> */}
           <h1>{this.state.counter}</h1>
           <button onClick = {this.handleIncrement}>Increment</button>
           <Login />
+          <BookList books = {this.state.books} />
         </div>
       )
     }
