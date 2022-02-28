@@ -1,22 +1,50 @@
-// import React, {useState} from 'react';
-import React from 'react';
+import { connect } from 'react-redux'
+import React, { useState } from 'react'
 
-function  Counter() {
-    // const [cout, setCount] = setCount(0);
+function Counter(props) {
 
-    // const handleInput = () => {
-    //     setCount(count + 1)
-    // }
-    // return (
-    //     <div>
-    //         <h1>{count}</h1>
-    //         <button onClick={handleInput}>+</button> 
-    //     </div>
-    // )
-    return(
+    const [value, setValue] = useState('')
+
+    const handleIncrement = () => {
+        props.onIncrement() 
+    }
+
+    const handleDecrement = () => {
+        props.onDecrement()
+    }
+
+    const handleTextChange = (e) => {
+        setValue(e.target.value)
+    }
+
+    const handleAdd = () => {
+        props.onAdd(parseInt(value))
+    }
+
+    return (
         <div>
-             <h1>Test</h1>
+            <h1>Counter</h1>
+            <h3>{props.ctr}</h3>
+            <button onClick = {handleIncrement}>+</button>
+            <button onClick = {handleDecrement}>-</button>
+            <input type = "text" onChange = {handleTextChange} />
+            <button onClick = {handleAdd}>Add</button>
         </div>
     )
 }
-export default Counter();
+
+const mapStateToProps = (state) => {
+    return {
+        ctr: state.counter 
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onIncrement: () => dispatch({type: 'INCREMENT'}), 
+        onDecrement: () => dispatch({type: 'DECREMENT'}), 
+        onAdd: (value) => dispatch({type: 'ADD', payload: value})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter) 
