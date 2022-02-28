@@ -9,7 +9,7 @@ function DisplayCounter(props){
         </div>
     )
 
-}
+};
 //map global state to local state
 const mapStateToProps = (state) => {
     return{

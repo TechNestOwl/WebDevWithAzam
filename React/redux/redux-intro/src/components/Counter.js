@@ -1,4 +1,5 @@
 // import React, {useState} from 'react';
+import React from 'react';
 
 function  Counter() {
     // const [cout, setCount] = setCount(0);
@@ -14,7 +15,7 @@ function  Counter() {
     // )
     return(
         <div>
-            
+             <h1>Test</h1>
         </div>
     )
 }
