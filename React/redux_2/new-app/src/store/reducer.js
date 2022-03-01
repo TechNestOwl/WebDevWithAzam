@@ -1,12 +1,28 @@
+import * as actionTypes from '../store/actions/actionTypes'
 
 const initialState = {
-    counter: 0
+    counter: 99
 }
 
-const reducer = (state = initialState, action) => {
-    return(
-        state
-    )
-};
 
-export default reducer;
+// using initialState as default value
+const reducer = (state = initialState, action) => {
+
+    switch(action.type) {
+        case actionTypes.INCREMENT :
+            return{
+            ...stae,
+            counter: state.counter + 1
+        }
+        return state
+    }
+}
+    // if(action.type == actionTypes.INCREMENT){
+    //     return{
+    //         ...state,
+    //         counter: state.counter + 1
+    //     }
+    // }
+
+
+export default reducer
